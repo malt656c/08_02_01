@@ -1,0 +1,40 @@
+---
+---
+
+<figure>
+  <img src="../../public/logo.png" alt="" />
+  <div class="logo_text">
+    <img src="../../public/Gratis_adgang.png" alt="" />
+    <div class="time">
+      <img src="../../public/dato.png" alt="" />
+      <img src="../../public/year.png" alt="" />
+    </div>
+  </div>
+</figure>
+
+<style>
+  * {
+    margin: 0;
+  }
+  figure, .logo_text, .time{
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+    max-width: 500px;
+  }
+  figure > img {
+    position: relative;
+    left: -1rem;
+  }
+  img {
+    max-width: 100%;
+    object-fit: contain;
+  }
+  .time{
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+  }
+  .time img:last-child {
+    height: 75%;
+  }
+</style>
