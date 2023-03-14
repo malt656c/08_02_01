@@ -1,0 +1,10 @@
+:root{
+    --background_primary: #FCF3ED;
+}
+body{
+    background-color: var(--background_primary);
+}
+header{
+    display: grid;
+    place-items: center;
+}
