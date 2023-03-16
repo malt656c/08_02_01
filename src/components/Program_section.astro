@@ -1,0 +1,87 @@
+---
+import ProgramCard from "../components/Program_card.astro";
+---
+
+<div class="sections">
+
+<div class="main">
+    <h2>Main Stage</h2>
+    <div class="test_card">
+    </div>
+    <div class="test_card">
+    </div>
+    <div class="test_card">
+    </div>
+   
+    <!-- <ProgramCard/> -->
+          
+</div>
+<div class="second">
+    <h2>Second Stage</h2>
+    <div class="test_card">
+    </div>
+    <div class="test_card">
+    </div>
+    <div class="test_card">
+    </div>
+    <!-- <ProgramCard/> -->
+          
+</div>
+<div class="lawn">
+    <h2>The Lawn</h2>
+    <div class="test_card">
+    </div>
+    <div class="test_card">
+    </div>
+    <div class="test_card">
+    </div>
+    <!-- <ProgramCard/> -->
+          
+</div>
+</div>
+<style>
+    .test_card{
+        width: 150px;
+        background-color: var(--custom_red);
+        height: 40px;
+        margin: 5px 10px 5px 10px;
+        /* margin-left: auto; */
+    }
+    .sections{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    h2{
+        font-size: 17px;
+        border:1px solid #CCC;
+    text-align:center;
+    margin: 20px;
+    border-radius: 25px;
+    background-color: #e2e2e221;
+}
+/* span{
+    position:relative;
+    top:1px;
+    display:inline-block;
+    border-bottom:1px solid #AAA;
+} */
+    
+  .card {
+    background-color: #ffffff;
+    height: 300px;
+    margin: 20px;
+    filter: drop-shadow(7px 10px 6px #a92e4536);
+
+    /* filter: drop-shadow(10px 10px 9px #4444dd); */
+    A92E44
+  }
+  h2,h3 {
+    text-align: center;
+  }
+
+  @media (min-width: 1300px) {
+    .card {
+      margin: 30px;
+    }
+  }
+</style>

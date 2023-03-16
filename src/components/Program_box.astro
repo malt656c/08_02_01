@@ -1,0 +1,40 @@
+---
+import ProgramSection from "../components/Program_section.astro";
+import Favorits from "../components/Favorits.astro";
+---
+
+<div class="saturday_card card">
+    <h2>Saturday</h2>
+    <ProgramSection/>
+          
+</div>
+<div class="saturday_card card">
+    <h2>Sunday</h2>
+    <ProgramSection/>
+          
+</div>
+<div class="saturday_card card">
+    <h2>Favorits</h2>
+    <Favorits/>
+          
+</div>
+<style>
+  .card {
+    background-color: #ffffff;
+    height: 300px;
+    margin: 20px;
+    filter: drop-shadow(7px 10px 6px #a92e4536);
+
+    /* filter: drop-shadow(10px 10px 9px #4444dd); */
+    A92E44
+  }
+  h2,h3 {
+    text-align: center;
+  }
+
+  @media (min-width: 1300px) {
+    .card {
+      margin: 30px;
+    }
+  }
+</style>

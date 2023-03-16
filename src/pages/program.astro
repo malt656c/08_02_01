@@ -1,0 +1,26 @@
+---
+import Navigation from "../components/Navigation.astro";
+import Program_top_header from "../components/Program_top_header.astro";
+import ProgramBox from "../components/Program_box.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="../../public/stylesheets/index.css" />
+    <title>Program</title>
+  </head>
+
+  <body>
+    <header>
+      <Program_top_header />
+      <Navigation />
+    </header>
+    <main>
+      <ProgramBox />
+    </main>
+  </body>
+</html>
