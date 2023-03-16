@@ -1,5 +1,22 @@
 ---
 ---
+
+<script>
+  const burgerButton = document.querySelector(".burger_button");
+  const menu = document.querySelector("nav");
+  burgerButton.addEventListener("mousedown", showMenu);
+  function showMenu() {
+    menu.classList.toggle("showmenu");
+    burgerButton.children[0].classList.toggle("cross");
+    burgerButton.children[1].classList.toggle("fade");
+    burgerButton.children[2].classList.toggle("crossup");
+  }
+</script>
+<div class="burger_button">
+  <div class="burger_bar"></div>
+  <div class="burger_bar"></div>
+  <div class="burger_bar"></div>
+</div>
 <nav>
   <div><a href="index.html">Welcome</a></div>
   <div class="spacer"></div>
@@ -15,7 +32,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 1000px;
+    width: 100%;
   }
   .spacer {
     width: 2px;
@@ -25,25 +42,86 @@
   a {
     font-size: 1.5rem;
     text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: roboto;
+    font-weight: 300;
     padding: 1rem;
-    color: black;
+    color: var(--custom_black);
     transition: all 0.2s ease-in-out;
     display: grid;
-    gap: 0.125rem;
-    filter: drop-shadow(0 0 0 transparent);
   }
   a:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
   a::after {
     content: "";
     height: 1px;
     width: 0%;
-    background-color: black;
+    background-color: var(--custom_black);
     transition: all 0.2s ease-in-out;
   }
   a:hover::after {
     width: 100%;
+  }
+  .burger_button {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+
+    width: 5em;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--custom_red);
+    padding: 1.25rem;
+    display: none;
+    place-items: center;
+  }
+  .burger_bar {
+    width: 100%;
+    height: 5px;
+    background-color: var(--muted_white);
+    border-radius: 2.5px;
+    transition: all 0.2s;
+  }
+  @media (max-width: 800px) {
+    .burger_button {
+      display: grid;
+      z-index: 1000;
+    }
+    a::after {
+      background-color: var(--muted_white);
+    }
+    nav {
+      flex-direction: column;
+      background-color: var(--custom_red);
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      transition: all 0.2s ease-out;
+      transform-origin: 95% 5%;
+      transform: scale(0, 0);
+      border-radius: 50%;
+      z-index: 900;
+    }
+    .showmenu {
+      transform: scale(1, 1);
+      border-radius: 0;
+    }
+    .cross {
+      transform: rotate(-45deg);
+      transform-origin: right;
+    }
+    .crossup {
+      transform: rotate(45deg);
+      transform-origin: right;
+    }
+    .fade {
+      filter: opacity(0);
+    }
+    .spacer {
+      display: none;
+    }
+    a {
+      color: var(--muted_white);
+    }
   }
 </style>
