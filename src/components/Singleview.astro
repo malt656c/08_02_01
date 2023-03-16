@@ -1,0 +1,46 @@
+---
+import Singelview_info from "../components/Singleview_info.astro";
+---
+
+<div class="card">
+  <div class="img">
+    <img src="../../public/cosplay_car_test.png" alt="" />
+    <h1>Cosplay contest</h1>
+  </div>
+  <div class="addInfo">
+    <h2>J-pop con</h2>
+    <img src="../../public/under_line_evet_card.png" alt="" />
+    <div class="info">
+      <Singelview_info />
+    </div>
+
+    <div class="scocial">
+      <a href="#">
+        <img src="../../public/icon_google.png" alt="" />
+      </a>
+
+      <a href="#">
+        <img src="../../public/icon_youtube.png" alt="" />
+      </a>
+
+      <a href="#">
+        <img src="../../public/icon_facebook.png" alt="" />
+      </a>
+
+      <a href="#">
+        <img src="../../public/icon_www.png" alt="" />
+      </a>
+
+      <a href="#">
+        <img src="../../public/mdi_spotify.png" alt="" />
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+</style>
