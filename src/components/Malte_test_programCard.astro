@@ -1,14 +1,31 @@
 ---
-const{eventName,startTime,endTime} = Astro.props;
+const { eventName, startTime, endTime, eventId } = Astro.props;
 ---
 
-<article>
+<script>
+  let favorites = [];
+  let favoritesid = [];
+  document.querySelectorAll("button").forEach((button) => button.addEventListener("mousedown", favorite));
+  function favorite() {
+    this.style.color = "orange";
+    this.style.webkitTextStrokeColor = "orange";
+    this.style.textShadow = "0 0 3px black";
+
+    favorites.push(this.previousElementSibling.previousElementSibling.textContent);
+    favoritesid.push(this.parentElement.parentElement.classList[0]);
+    console.log("click");
+    console.log(favorites);
+    console.log(favoritesid);
+  }
+</script>
+
+<article class={eventId}>
   <div>
     <h2>{eventName}</h2>
-    <p><span>{startTime}</span><span> - </span><span>{endTime}</span></p>
+    <p><span>{startTime}</span><span> -</span><span>{endTime}</span></p>
     <button type="button">★</button>
   </div>
-<slot></slot>
+  <slot />
 </article>
 
 <style>
@@ -35,20 +52,18 @@ const{eventName,startTime,endTime} = Astro.props;
   button {
     background-color: transparent;
     border-color: transparent;
-    color: inherit;
+    color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
     font-size: 3em;
+    grid-column: 2/3;
     grid-row: 2/3;
     aspect-ratio: 1;
     line-height: 0;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: var(--muted_white);
   }
   span {
     grid-row: 2/3;
     font-size: 1.5em;
-  }
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 </style>
