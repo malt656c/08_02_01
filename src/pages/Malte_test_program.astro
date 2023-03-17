@@ -1,0 +1,25 @@
+---
+import HeaderWithBackground from "../components/Header_with_background.astro";
+import MalteProgramSection from "../components/Malte_program_section.astro";
+import MalteTestProgramBox from "../components/Malte_test_program_box.astro";
+import MalteTestProgramcard from "../components/Malte_test_programCard.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="../../public/stylesheets/index.css" />
+    <title>Astro</title>
+  </head>
+  <body>
+    <HeaderWithBackground>
+      <img src="../../public/programTitel.png" alt="" />
+    </HeaderWithBackground>
+    <main>
+      <MalteProgramSection />
+    </main>
+  </body>
+</html>

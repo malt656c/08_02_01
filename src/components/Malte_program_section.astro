@@ -1,0 +1,28 @@
+---
+import MalteTestProgramBox from "./Malte_test_program_box.astro";
+---
+
+<section>
+  <h2>Saturday</h2>
+  <MalteTestProgramBox />
+  <MalteTestProgramBox />
+  <MalteTestProgramBox />
+</section>
+
+<style>
+  section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    gap: 2rem;
+    background-color: var(--custom_white);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    margin: 3rem;
+  }
+  h2 {
+    grid-column: span 3;
+    font-family: roboto;
+    font-size: 5rem;
+  }
+</style>
