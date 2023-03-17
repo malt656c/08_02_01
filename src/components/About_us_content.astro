@@ -33,18 +33,18 @@
 
 <style>
   .container {
-    margin: auto;
-    margin: 3em;
   }
 
   .flex_container {
     margin-top: 2em;
     display: flex;
     flex-direction: row;
+    justify-content: center;
   }
 
   img {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     object-fit: contain;
   }
 
@@ -56,12 +56,12 @@
     font-size: 20px;
     font-weight: 300;
     font-stretch: normal;
+    max-width: 65ch;
   }
 
   @media (max-width: 1000px) {
     .flex_container {
       flex-wrap: wrap;
-      justify-content: center;
     }
 
     p {
