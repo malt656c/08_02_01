@@ -25,9 +25,31 @@ import Line from "../components/Line.astro";
     <main>
       <AboutUsContent />
       <Line />
-      <PDFCard text="Sakura Festival Lottery Statement of the Account 2018  " />
-      <PDFCard text="Sakura Festival Lottery Statement of the Account 2018 " />
+      <h1>Rules of the Copenhagen Sakura Festival Committee</h1>
+      <article>
+        <PDFCard text="Sakura Festival Lottery Statement of the Account 2018  " />
+        <PDFCard text="Sakura Festival Lottery Statement of the Account 2018 " />
+      </article>
     </main>
     <Footer />
   </body>
 </html>
+
+<style>
+  article {
+    display: flex;
+    margin: auto;
+    gap: 2em;
+    padding: 2em;
+  }
+  h1 {
+    margin: auto;
+    padding: 1em;
+    font-family: "roboto";
+    font-display: auto;
+    font-style: normal;
+    font-size: 20px;
+    font-weight: 500;
+    font-stretch: normal;
+  }
+</style>

@@ -45,6 +45,7 @@
 
   img {
     width: 500px;
+    object-fit: contain;
   }
 
   p {
@@ -55,5 +56,12 @@
     font-size: 20px;
     font-weight: 300;
     font-stretch: normal;
+  }
+
+  @media (max-width: 1000px) {
+    .flex_container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 </style>
