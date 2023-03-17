@@ -1,0 +1,31 @@
+---
+const Text = Astro.props.text;
+---
+
+<section>
+  <img src="../../public/pdf.png" alt="pdf_logo" />
+  <p>{Text}</p>
+</section>
+
+<style>
+  section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: white;
+    border-style: solid;
+    width: 20em;
+  }
+  section > img {
+    width: 90px;
+    margin: auto;
+  }
+  section > p {
+    margin: auto;
+    padding-right: 10px;
+    font-family: "roboto";
+    font-display: auto;
+    font-style: normal;
+    font-weight: 300;
+    font-stretch: normal;
+  }
+</style>
