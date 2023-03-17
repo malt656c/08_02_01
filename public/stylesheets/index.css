@@ -19,7 +19,12 @@ body {
 }
 header {
   display: grid;
-  place-items: center;
+}
+header>img, header>figure{
+  width: 100%;
+  max-width: 1200px;
+  padding-inline: 10vw;
+  object-fit: contain;
 }
 main {
   width: 100%;

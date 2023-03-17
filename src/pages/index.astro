@@ -1,5 +1,6 @@
 ---
 import LogoGrafik from "../components/Logo_grafik.astro";
+import HeaderWithBackground from "../components/Header_with_background.astro";
 import Navigation from "../components/Navigation.astro";
 import ForsideDescription from "../components/Forside_description.astro";
 import ProgramForside from "../components/Program_forside.astro";
@@ -31,10 +32,9 @@ const data = await response.json();
 	</head>
 
 	<body>
-	<header>
-		<LogoGrafik/>
-		<Navigation></Navigation>
-	</header>
+		<HeaderWithBackground>
+			<LogoGrafik/>
+		</HeaderWithBackground>
 	<main>
 	<!-- 	<Debug {data} /> -->
 				<ForsideDescription></ForsideDescription>
