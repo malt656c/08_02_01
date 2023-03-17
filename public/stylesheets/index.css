@@ -22,6 +22,5 @@ header {
   place-items: center;
 }
 main {
-  display: grid;
   width: 100%;
 }

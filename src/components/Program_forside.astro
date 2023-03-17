@@ -1,69 +1,33 @@
 ---
+import ProgramForsideEventName from "./Program_forside_event_name.astro";
+
+import { Debug } from "astro/components";
+
+const url = "https://esdfgaunzaoxobhvkhgm.supabase.co/rest/v1/event_list";
+
+const options = {
+  headers: {
+    apikey:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVzZGZnYXVuemFveG9iaHZraGdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3MzgwNDksImV4cCI6MTk5NDMxNDA0OX0.c56k4OeHHRhzbFiv3ltdjlaUJlRax8Y-lPQ1LggxS6g",
+  },
+};
+
+const response = await fetch(url, options);
+const data = await response.json();
 ---
+
 <section>
   <article class="saturday">
-    <span>Saturday 22.03.23</span>
+      <h3>Saturday 22.03.23</h3>
     <ul>
-      <li>WadaiAko</li>
-    </ul>
-    <ul>
-      <li>Opening vermony</li>
-      <li>Akido</li>
-    </ul>
-    <ul>
-      <li>Karate børn</li>
-      <li>Wering Kimono</li>
-      <li>Koto & Shakuchachi</li>
-      <li>Tsugaru shamisen</li>
-    </ul>
-    <ul>
-      <li>Cosplay Constest</li>
-      <li>Soranbushi</li>
-      <li>Kendo</li>
-      <li>Wadaiko</li>
-      <li>Bondori</li>
-      <li>Haiku</li>
-      <li>About Shamisen</li>
-    </ul>
-    <ul>
-      <li>Calligraphy</li>
-      <li>Anime drawing workshop</li>
-      <li>Koto & shakuihachi</li>
-      <li>Orgami</li>
-      <li>Tea cermony</li>
+      {data.map((event) => <ProgramForsideEventName eventNavn={event.event_name} />)}
     </ul>
   </article>
 
   <article class="sunday">
-    <span>Sunday 23.03.23</span>
+    <h3>Sunday 23.03.23</h3>
     <ul>
-      <li>WadaiAko</li>
-    </ul>
-    <ul>
-      <li>Opening vermony</li>
-      <li>Akido</li>
-    </ul>
-    <ul>
-      <li>Karate børn</li>
-      <li>Wering Kimono</li>
-      <li>Koto & Shakuchachi</li>
-      <li>Tsugaru shamisen</li>
-    </ul>
-    <ul>
-      <li>Cosplay Constest</li>
-      <li>Soranbushi</li>
-      <li>Kendo</li>
-      <li>Wadaiko</li>
-      <li>Bondori</li>
-      <li>Haiku</li>
-      <li>About Shamisen</li>
-    </ul>
-    <ul>
-      <li>Calligraphy</li>
-      <li>Anime drawing workshop</li>
-      <li>Koto & shakuihachi</li>
-      <li>Orgami</li>
-      <li>Tea cermony</li>
+      {data.map((event) => <ProgramForsideEventName eventNavn={event.event_name} />)}
     </ul>
   </article>
 </section>
@@ -72,7 +36,7 @@
   section {
     display: grid;
     gap: 2rem;
-    width:70vw;
+    width: 70vw;
     margin: auto;
   }
   article {
@@ -83,22 +47,23 @@
   }
   article:last-of-type {
     justify-content: right;
+    text-align: right;
   }
-  article:last-of-type * {
+  article:last-of-type ul{
     text-align: right;
     justify-content: right;
   }
-  span {
+  article:last-of-type h3{
+    margin-right: 1.2rem;
+  }
+  h3 {
     color: var(--custom_red);
     text-decoration: underline;
-    margin-bottom: 0.5rem ;
+    margin-bottom: 0.5rem;
   }
   ul {
     display: flex;
-    gap: 1.5rem;
+    flex-wrap: wrap;
     margin-block: 0.25rem;
-  }
-  ul:nth-of-type(2n) {
-    color: var(--custom_red);
   }
 </style>
