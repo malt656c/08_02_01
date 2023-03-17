@@ -29,4 +29,16 @@ const Text = Astro.props.text;
     font-weight: 300;
     font-stretch: normal;
   }
+  @media (max-width: 750px) {
+    section {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    section > p {
+      text-align: center;
+      padding: 0.5em;
+      font-size: 15px;
+    }
+  }
 </style>
