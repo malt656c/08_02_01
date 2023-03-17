@@ -20,8 +20,9 @@ body {
 header {
   display: grid;
 }
-header>img{
-  max-width: 100%;
+header>img, header>figure{
+  width: 100%;
+  max-width: 1200px;
   padding-inline: 10vw;
   object-fit: contain;
 }
