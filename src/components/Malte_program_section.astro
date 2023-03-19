@@ -13,23 +13,27 @@ const options = {
 const response = await fetch(url, options);
 const data = await response.json();
 
-const mainStage = data.filter((event) => event.stage == "Main")
-const secondStage = data.filter((event) => event.stage == "Second Stage")
-const theLawn = data.filter((event) => event.stage == "The Lawn")
+const day = Astro.props.day;
+
+const mainStage= data.filter((event) => event.stage == "Main" && event.day == day);
+const secondStage = data.filter((event) => event.stage == "Second Stage" && event.day == day);
+const theLawn = data.filter((event) => event.stage == "The Lawn" && event.day == day);
 ---
 
+
+
 <section>
-  <h2>Saturday</h2>
-  <MalteTestProgramBox location={mainStage} title="Main Stage"/>
-  <MalteTestProgramBox location={secondStage} title= "Second Stage"/>
-  <MalteTestProgramBox location={theLawn} title="The Lawn"/>
+  <h2>{day}</h2>
+  <MalteTestProgramBox location={mainStage} title="Main Stage" />
+  <MalteTestProgramBox location={secondStage} title="Second Stage" />
+  <MalteTestProgramBox location={theLawn} title="The Lawn" />
 </section>
 
 <style>
   section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    place-items: center;
+    justify-content: center;
     gap: 2rem;
     background-color: var(--custom_white);
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
@@ -40,5 +44,6 @@ const theLawn = data.filter((event) => event.stage == "The Lawn")
     grid-column: span 3;
     font-family: roboto;
     font-size: 5rem;
+    text-align: center;
   }
 </style>

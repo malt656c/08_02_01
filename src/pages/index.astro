@@ -8,12 +8,12 @@ import Footer from "../components/Footer.astro";
 /* import data */
 import { Debug } from "astro/components";
 
-const url = "https://esdfgaunzaoxobhvkhgm.supabase.co/rest/v1/event_list"
+const url = "https://esdfgaunzaoxobhvkhgm.supabase.co/rest/v1/event_list";
 
 const options = {
   headers: {
     apikey:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVzZGZnYXVuemFveG9iaHZraGdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3MzgwNDksImV4cCI6MTk5NDMxNDA0OX0.c56k4OeHHRhzbFiv3ltdjlaUJlRax8Y-lPQ1LggxS6g",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVzZGZnYXVuemFveG9iaHZraGdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3MzgwNDksImV4cCI6MTk5NDMxNDA0OX0.c56k4OeHHRhzbFiv3ltdjlaUJlRax8Y-lPQ1LggxS6g",
   },
 };
 
@@ -22,29 +22,27 @@ const data = await response.json();
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="stylesheet" href="../../public/stylesheets/index.css">
-		<title>Astro</title>
-	</head>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="../../public/stylesheets/index.css" />
+    <title>Astro</title>
+  </head>
 
-	<body>
-		<HeaderWithBackground>
-			<LogoGrafik/>
-		</HeaderWithBackground>
-	<main>
-	<!-- 	<Debug {data} /> -->
-				<ForsideDescription></ForsideDescription>
-			
+  <body>
+    <HeaderWithBackground>
+      <LogoGrafik />
+    </HeaderWithBackground>
+    <main>
+      <!-- 	<Debug {data} /> -->
+      <ForsideDescription />
 
-					<ProgramForside/>
-
-	</main>
-	<footer>
-<Footer></Footer>
-	</footer>
-	</body>
+      <ProgramForside />
+    </main>
+    <footer>
+      <Footer />
+    </footer>
+  </body>
 </html>

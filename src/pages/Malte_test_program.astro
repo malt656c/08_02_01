@@ -19,7 +19,25 @@ import MalteTestProgramcard from "../components/Malte_test_programCard.astro";
       <img src="../../public/programTitel.png" alt="" />
     </HeaderWithBackground>
     <main>
-      <MalteProgramSection />
+      <MalteProgramSection day="Saturday" />
+      <MalteProgramSection day="Sunday" />
+      <MalteProgramSection></MalteProgramSection>
     </main>
+    <script>
+      let favorites = [];
+      document.querySelectorAll("button").forEach((button) => button.addEventListener("mousedown", favorite));
+      function favorite() {
+        this.style.color = "orange";
+        this.style.webkitTextStrokeColor = "orange";
+        this.style.textShadow = "0 0 3px black";
+
+        favorites.push(this.parentElement.parentElement.classList[0]);
+        console.log("click");
+        console.log(favorites);
+
+        console.log(this.parentElement.parentElement, document.getElementById("favoritesSection"))
+document.querySelector("main").lastElementChild.appendChild(this.parentElement.parentElement);
+      }
+    </script>
   </body>
 </html>

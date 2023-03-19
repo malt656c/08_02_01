@@ -4,9 +4,9 @@ import MalteTestProgramcard from "./Malte_test_programCard.astro";
 import { Debug } from "astro/components";
 import { log } from "astro/dist/core/logger/core";
 
-const {location, title} = Astro.props;
+const { location, title } = Astro.props;
 
-/* const url = "https://esdfgaunzaoxobhvkhgm.supabase.co/rest/v1/event_list";
+const url = "https://esdfgaunzaoxobhvkhgm.supabase.co/rest/v1/event_list";
 
 const options = {
   headers: {
@@ -16,20 +16,54 @@ const options = {
 };
 
 const response = await fetch(url, options);
-const data = await response.json(); */
+const data = await response.json();
 ---
 
 <script>
+import MalteTestProgram from "../pages/Malte_test_program.astro";
 
+  let favorites = [];
+  document.querySelectorAll("button").forEach((button) => button.addEventListener("mousedown", favorite));
+  function favorite() {
+    this.style.color = "orange";
+    this.style.webkitTextStrokeColor = "orange";
+    this.style.textShadow = "0 0 3px black";
+
+    favorites.push(this.parentElement.parentElement.classList[0]);
+    console.log("click");
+    console.log(favorites);
+  }
 </script>
-<div>
-  <h3>{title}</h3>
-<!--   <Debug {data} /> -->
-  {location.map((event) => <MalteTestProgramcard eventName={event.event_name} startTime={event.start_time.substring(0,5)} endTime={event.end_time?.substring(0,5)} eventId={event.id}>  </MalteTestProgramcard>)}
-</div>
+<article>
+  <h2>{title}</h2>
+  <div>
+    <!--   <Debug {data} /> -->
+    {
+      location.map((event) => (
+        <MalteTestProgramcard eventName={event.event_name}
+         startTime={event.start_time.substring(0, 5)} 
+         endTime={event.end_time?.substring(0, 5)} 
+         eventId={event.id}>
+          {" "}
+        </MalteTestProgramcard>
+      ))
+    }
+  </div>
+</article>
 <!-- <img src={'../../public/database_billeder/' + event.event_name.split(" ").join("_") + '.webp'} alt=""> -->
 <style>
-  div{
+  article {
+    display: grid;
+    justify-items: center;
+    align-content: flex-start;
+    gap: 1rem;
+  }
+  h2 {
+    font-family: roboto;
+    font-weight: 300;
+    font-size: 1.8rem;
+  }
+  div {
     max-width: 500px;
     max-height: 750px;
     overflow-y: scroll;

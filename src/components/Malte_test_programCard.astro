@@ -3,20 +3,18 @@ const { eventName, startTime, endTime, eventId } = Astro.props;
 ---
 
 <script>
-  let favorites = [];
-  let favoritesid = [];
+/*   let favorites = [];
   document.querySelectorAll("button").forEach((button) => button.addEventListener("mousedown", favorite));
   function favorite() {
     this.style.color = "orange";
     this.style.webkitTextStrokeColor = "orange";
     this.style.textShadow = "0 0 3px black";
 
-    favorites.push(this.previousElementSibling.previousElementSibling.textContent);
-    favoritesid.push(this.parentElement.parentElement.classList[0]);
+    favorites.push(this.parentElement.parentElement.classList[0]);
     console.log("click");
     console.log(favorites);
-    console.log(favoritesid);
-  }
+    
+  } */
 </script>
 
 <article class={eventId}>
