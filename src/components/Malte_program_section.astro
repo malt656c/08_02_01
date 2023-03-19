@@ -1,12 +1,28 @@
 ---
 import MalteTestProgramBox from "./Malte_test_program_box.astro";
+
+const url = "https://esdfgaunzaoxobhvkhgm.supabase.co/rest/v1/event_list";
+
+const options = {
+  headers: {
+    apikey:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVzZGZnYXVuemFveG9iaHZraGdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3MzgwNDksImV4cCI6MTk5NDMxNDA0OX0.c56k4OeHHRhzbFiv3ltdjlaUJlRax8Y-lPQ1LggxS6g",
+  },
+};
+
+const response = await fetch(url, options);
+const data = await response.json();
+
+const mainStage = data.filter((event) => event.stage == "Main")
+const secondStage = data.filter((event) => event.stage == "Second Stage")
+const theLawn = data.filter((event) => event.stage == "The Lawn")
 ---
 
 <section>
   <h2>Saturday</h2>
-  <MalteTestProgramBox />
-  <MalteTestProgramBox />
-  <MalteTestProgramBox />
+  <MalteTestProgramBox location={mainStage} title="Main Stage"/>
+  <MalteTestProgramBox location={secondStage} title= "Second Stage"/>
+  <MalteTestProgramBox location={theLawn} title="The Lawn"/>
 </section>
 
 <style>

@@ -4,7 +4,9 @@ import MalteTestProgramcard from "./Malte_test_programCard.astro";
 import { Debug } from "astro/components";
 import { log } from "astro/dist/core/logger/core";
 
-const url = "https://esdfgaunzaoxobhvkhgm.supabase.co/rest/v1/event_list";
+const {location, title} = Astro.props;
+
+/* const url = "https://esdfgaunzaoxobhvkhgm.supabase.co/rest/v1/event_list";
 
 const options = {
   headers: {
@@ -14,19 +16,23 @@ const options = {
 };
 
 const response = await fetch(url, options);
-const data = await response.json();
-console.log(typeof data[1].start_time);
+const data = await response.json(); */
 ---
 
-<script></script>
+<script>
+
+</script>
 <div>
-  <Debug {data[0]} />
-  {data.map((event) => <MalteTestProgramcard eventName={event.event_name} startTime={'12:15'} endTime={'13:15'} eventId={event.id}>  </MalteTestProgramcard>)}
+  <h3>{title}</h3>
+<!--   <Debug {data} /> -->
+  {location.map((event) => <MalteTestProgramcard eventName={event.event_name} startTime={event.start_time.substring(0,5)} endTime={event.end_time?.substring(0,5)} eventId={event.id}>  </MalteTestProgramcard>)}
 </div>
 <!-- <img src={'../../public/database_billeder/' + event.event_name.split(" ").join("_") + '.webp'} alt=""> -->
 <style>
   div{
     max-width: 500px;
+    max-height: 750px;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     gap: 1rem;
