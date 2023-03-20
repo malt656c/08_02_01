@@ -1,114 +1,49 @@
 ---
-import ProgramCard from "../components/Program_card.astro";
+import ProgramBox from "./Program_box.astro";
+
+const url = "https://esdfgaunzaoxobhvkhgm.supabase.co/rest/v1/event_list";
+
+const options = {
+  headers: {
+    apikey:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVzZGZnYXVuemFveG9iaHZraGdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3MzgwNDksImV4cCI6MTk5NDMxNDA0OX0.c56k4OeHHRhzbFiv3ltdjlaUJlRax8Y-lPQ1LggxS6g",
+  },
+};
+
+const response = await fetch(url, options);
+const data = await response.json();
+
+const day = Astro.props.day;
+
+const mainStage= data.filter((event) => event.stage == "Main" && event.day == day);
+const secondStage = data.filter((event) => event.stage == "Second Stage" && event.day == day);
+const theLawn = data.filter((event) => event.stage == "The Lawn" && event.day == day);
 ---
 
-<div class="sections">
-  <div class="main hidden">
-    <h2>Main Stage</h2>
-    <div class="arrow">
-      <span></span>
-    </div>
 
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-  </div>
 
-  <div class="second hidden">
-    <h2>Second Stage</h2>
+<section>
+  <h2>{day}</h2>
+  <ProgramBox location={mainStage} title="Main Stage" />
+  <ProgramBox location={secondStage} title="Second Stage" />
+  <ProgramBox location={theLawn} title="The Lawn" />
+</section>
 
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-  </div>
-  <div class="lawn hidden">
-    <h2>The Lawn</h2>
-
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-    <a href="../components/Program_card.astro"><ProgramCard /></a>
-  </div>
-</div>
 <style>
-  /* pil */
-  .arrow {
-    position: absolute;
-    align-items: center;
-    top: 6%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    gap: 2rem;
+    background-color: var(--custom_white);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    margin: 3rem;
   }
-  .arrow span {
-    display: block;
-    width: 30px;
-    height: 30px;
-    border-bottom: 5px solid blue;
-    border-right: 5px solid blue;
-    transform: rotate(45deg);
-    margin: -10px;
-    animation: scroll 2s infinite;
-  }
-  .arrow span: :nth-child(2) {
-    animation-delay: -0.4s;
-  }
-  /* @keyframes scroll {
-    0% {
-      opacity: 0;
-      transform: rotate(45deg) translate(-20px, -20px);
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 1;
-      transform: rotate(45deg) translate(20px, 20px);
-    }
-  } */
-
-  .hidden {
-    max-height: 700px;
-    overflow-y: scroll;
-    margin: 20px;
-  }
-
   h2 {
-    font-size: 17px;
-    border: 1px solid #ccc;
+    grid-column: span 3;
+    font-family: roboto;
+    font-size: 5rem;
     text-align: center;
-    margin: 20px;
-    border-radius: 25px;
-    background-color: #e2e2e221;
-    max-width: 400px;
-  }
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  h2,
-  h3 {
-    text-align: center;
-  }
-
-  @media (min-width: 800px) {
-    .sections {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @media (min-width: 1300px) {
-    .sections {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-    }
   }
 </style>

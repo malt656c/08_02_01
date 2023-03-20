@@ -1,8 +1,6 @@
 ---
-import Navigation from "../components/Navigation.astro";
-import Program_top_header from "../components/Program_top_header.astro";
-import ProgramBox from "../components/Program_box.astro";
-import Footer from "../components/Footer.astro";
+import HeaderWithBackground from "../components/Header_with_background.astro";
+import ProgramSection from "../components/Program_section.astro";
 ---
 
 <html lang="en">
@@ -12,20 +10,95 @@ import Footer from "../components/Footer.astro";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="stylesheet" href="../../public/stylesheets/index.css" />
-    <title>Program</title>
+    <title>Astro</title>
   </head>
-
   <body>
-    <header>
-      <div><a href="rodrigo_test.html">Welcome</a></div>
-      <Program_top_header />
-      <Navigation />
-    </header>
+    <HeaderWithBackground>
+      <img src="../../public/programTitel.png" alt="" />
+    </HeaderWithBackground>
     <main>
-      <ProgramBox />
+      <ProgramSection day="Saturday" />
+      <ProgramSection day="Sunday" />
+      <ProgramSection day="Favorites" />
     </main>
-    <footer>
-      <Footer />
-    </footer>
+
+    <style></style>
+
+    <script>
+      /* laver et tomt array som vi tilføjer vores favoritter til*/
+      let localStoredFavorites = [];
+
+      /* tjekker om der er data i localstorage, hvis der er, tilføjes dataen til favorit arrayet*/
+      if (localStorage.getItem("favorites") !== null) {
+        localStoredFavorites = JSON.parse(localStorage.getItem("favorites"));
+      } else {
+        console.log("no favorites found in local storage");
+      }
+
+      /* tilføjer eventlistener til favorit knapperne */
+      document.querySelectorAll("button").forEach((button) => button.addEventListener("mousedown", favorite));
+
+      /* begynder at finde favoritter i local storage når siden loades*/
+      window.addEventListener("load", getLocalStorage);
+
+      function getLocalStorage() {
+        console.log(localStoredFavorites);
+
+        /* tilføjer favoritterne fra local storage til favorit sectionen på siden */
+
+        /* finder de events på siden der er tilføjet til favorits og giver knapen en gul farve */
+        localStoredFavorites.forEach((item) => {
+          document.querySelector("main").lastElementChild.appendChild(document.getElementById(item).cloneNode(true));
+
+          let favoritedButton = document.getElementById(item).querySelector("button");
+          favoritedButton.style.color = "orange";
+          favoritedButton.style.webkitTextStrokeColor = "orange";
+          favoritedButton.style.textShadow = "0 0 3px black";
+          favoritedButton.removeEventListener("mousedown", favorite);
+
+          favoritedButton.addEventListener("mousedown", unfavorite)
+        });
+
+        /* søger for at knapperne i favorit sectionen er gule og ikke kan klikkes */
+        document
+          .querySelector("main")
+          .lastElementChild.querySelectorAll("button")
+          .forEach((button) => {
+            button.style.color = "orange";
+            button.style.webkitTextStrokeColor = "orange";
+            button.style.textShadow = "0 0 3px black";
+            button.addEventListener("mousedown", unfavorite)
+          });
+        document
+          .querySelector("main")
+          .lastElementChild.querySelectorAll("article>h2")
+          .forEach((headline) => headline.remove());
+      }
+
+      function favorite() {
+        /* ændre style på favorit stjernen */
+        this.style.color = "orange";
+        this.style.webkitTextStrokeColor = "orange";
+        this.style.textShadow = "0 0 3px black";
+
+        /* henter eventets id og tilføjer det til array*/
+        let cardID = this.parentElement.parentElement.id;
+        localStoredFavorites.push(cardID);
+
+        /* tilføjer favorit array til local storage */
+        localStorage.setItem("favorites", JSON.stringify(localStoredFavorites));
+        console.log(localStoredFavorites);
+        /* tilføjer den seneste tiløjede favorit til favoritsectionen */
+        let addToFavorit = document.getElementById(localStoredFavorites.at(-1)).cloneNode(true);
+        document.querySelector("main").lastElementChild.appendChild(addToFavorit);
+
+        /* fjerner klik funktionen fra favorit elementernes knap */
+        this.removeEventListener("mousedown", favorite);
+      }
+
+      function unfavorite(){
+        
+      }
+    </script>
   </body>
 </html>
