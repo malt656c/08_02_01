@@ -27,8 +27,8 @@ import Line from "../components/Line.astro";
       <Line />
       <h1>Rules of the Copenhagen Sakura Festival Committee</h1>
       <article>
-        <PDFCard text="Sakura Festival Lottery Statement of the Account 2018  " />
-        <PDFCard text="Sakura Festival Lottery Statement of the Account 2018 " />
+        <a href="/public/lottery2019_accountstatement.pdf" download="lottery2019"> <PDFCard text="Sakura Festival Lottery Statement of the Account 2018  " /></a>
+        <a href="/public/lottery2019_accountstatement.pdf" download="lottery2019"><PDFCard text="Sakura Festival Lottery Statement of the Account 2018 " /></a>
       </article>
     </main>
     <Footer />
@@ -42,6 +42,10 @@ import Line from "../components/Line.astro";
     gap: 2em;
     padding: 2em;
     justify-content: center;
+  }
+  a {
+    text-decoration: none;
+    color: black;
   }
   h1 {
     text-align: center;
