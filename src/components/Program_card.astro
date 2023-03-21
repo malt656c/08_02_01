@@ -1,5 +1,5 @@
 ---
-const { eventName, startTime, endTime, eventId } = Astro.props;
+const { eventName, startTime, endTime, eventId, eventLink } = Astro.props;
 ---
 
 <script>
@@ -17,14 +17,16 @@ const { eventName, startTime, endTime, eventId } = Astro.props;
   } */
 </script>
 
-<article id={eventId}>
-  <div>
-    <h2>{eventName}</h2>
-    <p><span>{startTime}</span><span> -</span><span>{endTime}</span></p>
-    <button type="button">★</button>
-  </div>
-  <slot />
-</article>
+<a href={eventLink}>
+  <article id={eventId}>
+    <div>
+      <h2>{eventName}</h2>
+      <p><span>{startTime}</span><span> -</span><span>{endTime}</span></p>
+      <button type="button">★</button>
+    </div>
+    <slot />
+  </article>
+</a>
 
 <style>
   article {
