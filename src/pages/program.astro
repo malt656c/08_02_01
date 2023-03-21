@@ -22,8 +22,6 @@ import ProgramSection from "../components/Program_section.astro";
       <ProgramSection day="Favorites" />
     </main>
 
-    <style></style>
-
     <script>
       /* laver et tomt array som vi tilføjer vores favoritter til*/
       let localStoredFavorites = [];
@@ -56,7 +54,7 @@ import ProgramSection from "../components/Program_section.astro";
           favoritedButton.style.textShadow = "0 0 3px black";
           favoritedButton.removeEventListener("mousedown", favorite);
 
-          favoritedButton.addEventListener("mousedown", unfavorite)
+          favoritedButton.addEventListener("mousedown", unfavorite);
         });
 
         /* søger for at knapperne i favorit sectionen er gule og ikke kan klikkes */
@@ -67,7 +65,7 @@ import ProgramSection from "../components/Program_section.astro";
             button.style.color = "orange";
             button.style.webkitTextStrokeColor = "orange";
             button.style.textShadow = "0 0 3px black";
-            button.addEventListener("mousedown", unfavorite)
+            button.addEventListener("mousedown", unfavorite);
           });
         document
           .querySelector("main")
@@ -96,8 +94,15 @@ import ProgramSection from "../components/Program_section.astro";
         this.removeEventListener("mousedown", favorite);
       }
 
-      function unfavorite(){
-        
+      function unfavorite() {
+        this.style.color = "rgba(255, 255, 255, 0.3)";
+        this.style.webkitTextStrokeColor = "var(--muted_white)";
+        this.style.textShadow = "none";
+
+        let cardID = this.parentElement.parentElement.id;
+        localStoredFavorites.splice(localStoredFavorites.indexOf(cardID), 1);
+        console.log(localStoredFavorites);
+        localStorage.setItem("favorites", JSON.stringify(localStoredFavorites));
       }
     </script>
   </body>
