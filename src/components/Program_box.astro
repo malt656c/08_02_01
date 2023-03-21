@@ -1,5 +1,6 @@
 ---
 import ProgramCard from "./Program_Card.astro";
+import Slug from "../pages/events/[slug].astro";
 const { location, title } = Astro.props;
 ---
 
@@ -10,7 +11,7 @@ const { location, title } = Astro.props;
     <!--   <Debug {data} /> -->
     {
       location.map((event) => (
-        <ProgramCard eventName={event.event_name} startTime={event.start_time.substring(0, 5)} endTime={event.end_time?.substring(0, 5)} eventId={event.id}>
+        <ProgramCard eventName={event.event_name} startTime={event.start_time.substring(0, 5)} endTime={event.end_time?.substring(0, 5)} eventId={event.id} eventLink={"/events/" + event.id}>
           <img src={"../../public/database_billeder/" + event.event_name.split(" ").join("_") + ".webp"} alt="" />
         </ProgramCard>
       ))

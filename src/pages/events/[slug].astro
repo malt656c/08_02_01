@@ -1,16 +1,18 @@
 ---
+import Footer from "../../components/Footer.astro";
+import Navigation from "../../components/Navigation.astro";
 export async function getStaticPaths() {
-    const url = "https://esdfgaunzaoxobhvkhgm.supabase.co/rest/v1/event_list";
+  const url = "https://esdfgaunzaoxobhvkhgm.supabase.co/rest/v1/event_list";
 
-const options = {
-  headers: {
-    apikey:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVzZGZnYXVuemFveG9iaHZraGdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3MzgwNDksImV4cCI6MTk5NDMxNDA0OX0.c56k4OeHHRhzbFiv3ltdjlaUJlRax8Y-lPQ1LggxS6g",
-  },
-};
+  const options = {
+    headers: {
+      apikey:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVzZGZnYXVuemFveG9iaHZraGdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3MzgwNDksImV4cCI6MTk5NDMxNDA0OX0.c56k4OeHHRhzbFiv3ltdjlaUJlRax8Y-lPQ1LggxS6g",
+    },
+  };
 
-const response = await fetch(url, options);
-const data = await response.json();
+  const response = await fetch(url, options);
+  const data = await response.json();
 
   return data.map((event) => {
     return {
@@ -22,3 +24,31 @@ const data = await response.json();
 
 const { event } = Astro.props;
 ---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="../../public/stylesheets/index.css" />
+    <title>Program</title>
+  </head>
+<body>
+  <header>
+    <Navigation />
+    <img src={"../../public/database_billeder/" + event.event_name.split(" ").join("_") + ".webp"} alt="" />
+    <h1>{event.event_name}</h1>
+  </header>
+  <main>
+    <h2></h2>
+    <section>
+      <h3>{event.day}</h3>
+      <h3>{event.location}</h3>
+      <h3>{event.start_time} - {event.end_time}</h3>
+    </section>
+    <section>{event.description}</section>
+  </main>
+  <Footer />
+</body>
+</html>
