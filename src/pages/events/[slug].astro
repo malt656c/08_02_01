@@ -24,31 +24,67 @@ export async function getStaticPaths() {
 
 const { event } = Astro.props;
 ---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="robots" content="noindex">
+    <meta name="robots" content="noindex" />
     <link rel="stylesheet" href="../../public/stylesheets/index.css" />
     <title>Program</title>
   </head>
-<body>
-  <header>
-    <Navigation />
-    <img src={"../../public/database_billeder/" + event.event_name.split(" ").join("_") + ".webp"} alt="" />
-    <h1>{event.event_name}</h1>
-  </header>
-  <main>
-    <h2></h2>
-    <section>
-      <h3>{event.day}</h3>
-      <h3>{event.location}</h3>
-      <h3>{event.start_time} - {event.end_time}</h3>
-    </section>
-    <section>{event.description}</section>
-  </main>
-  <Footer />
-</body>
+  <body>
+    <header>
+      <Navigation prefix="../" />
+      <div><img src={"../../public/database_billeder/" + event.event_name.split(" ").join("_") + ".webp"} alt="" />
+          <h1>{event.event_name}</h1>
+    </div>
+
+    </header>
+    <main>
+      <section>
+        <h3>{event.day}</h3>
+        <h3>{event.location}</h3>
+        <h3>{event.start_time} - {event.end_time}</h3>
+      </section>
+      <section>{event.description}</section>
+    </main>
+    <Footer />
+  </body>
 </html>
+
+<style>
+  header {
+    position: relative;
+    display: grid;
+    height: max-content;
+'    width: 100%;
+    aspect-ratio: 3;'
+  }
+  img {
+    width: 100%;
+    aspect-ratio: 3;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(70%);
+  }
+  header > div {
+    height: fit-content;
+    width: 100%;
+    top: 0;
+    z-index: -1;
+    position: absolute;
+display: grid;
+place-items: center;
+  }
+  h1 {
+    font-family: roboto;
+    color: var(--muted_white);
+    text-shadow: 0 0 4px rgb(0, 0, 0);
+    font-size: 4rem;
+    position: absolute;
+    bottom: 0;
+  }
+</style>
