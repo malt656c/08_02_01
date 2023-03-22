@@ -5,8 +5,7 @@ const url = "https://esdfgaunzaoxobhvkhgm.supabase.co/rest/v1/event_list";
 
 const options = {
   headers: {
-    apikey:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVzZGZnYXVuemFveG9iaHZraGdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3MzgwNDksImV4cCI6MTk5NDMxNDA0OX0.c56k4OeHHRhzbFiv3ltdjlaUJlRax8Y-lPQ1LggxS6g",
+    apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVzZGZnYXVuemFveG9iaHZraGdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3MzgwNDksImV4cCI6MTk5NDMxNDA0OX0.c56k4OeHHRhzbFiv3ltdjlaUJlRax8Y-lPQ1LggxS6g",
   },
 };
 
@@ -15,12 +14,10 @@ const data = await response.json();
 
 const day = Astro.props.day;
 
-const mainStage= data.filter((event) => event.stage == "Main" && event.day == day);
+const mainStage = data.filter((event) => event.stage == "Main" && event.day == day);
 const secondStage = data.filter((event) => event.stage == "Second Stage" && event.day == day);
 const theLawn = data.filter((event) => event.stage == "The Lawn" && event.day == day);
 ---
-
-
 
 <section>
   <h2>{day}</h2>
