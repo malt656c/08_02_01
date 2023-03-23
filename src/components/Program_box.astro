@@ -12,7 +12,7 @@ const { location, title } = Astro.props;
     {
       location.map((event) => (
         <ProgramCard eventName={event.event_name} startTime={event.start_time} endTime={event.end_time} eventId={event.id} eventLink={"/events/" + event.id}>
-          <img src={"../../public/database_billeder/" + event.event_name.split(" ").join("_") + ".webp"} alt="" />
+          <img src={"database_billeder/" + event.event_name.split(" ").join("_") + ".webp"} alt="" />
         </ProgramCard>
       ))
     }
