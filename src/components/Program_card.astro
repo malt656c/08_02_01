@@ -3,30 +3,19 @@ const { eventName, startTime, endTime, eventId, eventLink } = Astro.props;
 ---
 
 <script>
-  /*   let favorites = [];
-  document.querySelectorAll("button").forEach((button) => button.addEventListener("mousedown", favorite));
-  function favorite() {
-    this.style.color = "orange";
-    this.style.webkitTextStrokeColor = "orange";
-    this.style.textShadow = "0 0 3px black";
 
-    favorites.push(this.parentElement.parentElement.classList[0]);
-    console.log("click");
-    console.log(favorites);
-    
-  } */
 </script>
 
-<a href={eventLink}>
+
   <article id={eventId}>
     <div>
-      <h2>{eventName}</h2>
+      <a href={eventLink}><h2>{eventName}</h2></a>
       <p><span>{startTime}</span><span> -</span><span>{endTime}</span></p>
       <button type="button">★</button>
     </div>
     <slot />
   </article>
-</a>
+
 
 <style>
   article {
@@ -44,11 +33,13 @@ const { eventName, startTime, endTime, eventId, eventLink } = Astro.props;
     place-items: center;
     padding: 1rem;
   }
-  h2 {
+  a,h2 {
     grid-column: span 2;
     font-size: 1.5rem;
     font-weight: 500;
     text-align: center;
+    color: var(--muted_white);
+    text-decoration: none;
   }
   button {
     background-color: transparent;
@@ -67,4 +58,38 @@ const { eventName, startTime, endTime, eventId, eventLink } = Astro.props;
     grid-row: 2/3;
     font-size: 1.5em;
   }
+  @media(max-width:1250px){
+    span {
+font-size: 2rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  }
+
+  @media(max-width:600px){
+    span {
+font-size: 1.2rem;¨
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+  p{
+    grid-column: 1/2;
+grid-row: 2/3;
+  }
+  article {
+    grid-template-columns: 1fr;
+  }
+  button{
+    grid-row: span 2;
+  }
+  div {
+    grid-template-columns: 3fr 2fr;
+  }
+  a,h2 {
+    grid-column: span 1;
+  }
+}
+
 </style>

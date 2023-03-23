@@ -43,4 +43,13 @@ const theLawn = data.filter((event) => event.stage == "The Lawn" && event.day ==
     font-size: 5rem;
     text-align: center;
   }
+  @media(max-width:1250px){
+    section {
+
+    grid-template-columns:  1fr;
+  }
+  h2 {
+    grid-column: span 1;
+  }
+  }
 </style>

@@ -1,5 +1,5 @@
 ---
-import ProgramCard from "./Program_Card.astro";
+import ProgramCard from "./Program_card.astro";
 import Slug from "../pages/events/[slug].astro";
 const { location, title } = Astro.props;
 ---
@@ -44,5 +44,14 @@ const { location, title } = Astro.props;
     height: 100%;
     object-fit: cover;
     aspect-ratio: 16/9;
+  }
+  @media(max-width:1250px){
+article{
+  max-height: 100%;
+}
+div{
+  max-width: 100%;
+    max-height: fit-content;
+}
   }
 </style>
