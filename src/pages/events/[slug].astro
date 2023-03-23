@@ -39,7 +39,7 @@ const { event } = Astro.props;
   <body>
     <header>
       <div>
-        <img src={"../database_billeder/" + event.event_name.split(" ").join("_") + ".webp"} alt="" />
+        <img src={"../../database_billeder/" + event.event_name.split(" ").join("_") + ".webp"} alt="" />
         <h1>{event.event_name}</h1>
       </div>
       <Navigation prefix="../" />
