@@ -49,7 +49,7 @@ const { event } = Astro.props;
       <section class="info">
         <h3>{event.day}</h3>
         <h3>{event.stage}</h3>
-        <h3>{event.start_time.substring(0, 5)} - {event.end_time.substring(0, 5)}</h3>
+        <h3>{event.start_time/* .substring(0, 5) */} - {event.end_time/* .substring(0, 5) */}</h3>
       </section>
       <section><p>{event.description}</p></section>
     </main>
