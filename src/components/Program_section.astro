@@ -45,11 +45,15 @@ const theLawn = data.filter((event) => event.stage == "The Lawn" && event.day ==
   }
   @media(max-width:1250px){
     section {
-
     grid-template-columns:  1fr;
   }
   h2 {
     grid-column: span 1;
   }
+  }
+  @media(max-width:600px){
+    h2{
+      font-size: 2rem;
+    }
   }
 </style>

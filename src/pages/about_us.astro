@@ -2,8 +2,8 @@
 import Navigation from "../components/Navigation.astro";
 import PDFCard from "../components/PDF_card.astro";
 import Footer from "../components/Footer.astro";
-import AboutUsHeader from "../components/About_us_header.astro";
 import AboutUsContent from "../components/About_us_content.astro";
+import HeaderWithBackground from "../components/Header_with_background.astro";
 import Line from "../components/Line.astro";
 ---
 
@@ -20,8 +20,10 @@ import Line from "../components/Line.astro";
 
   <body>
     <header>
-      <AboutUsHeader />
-      <Navigation prefix={""} />
+<HeaderWithBackground>
+  <img src="../../public/about_us.png" alt="" />
+</HeaderWithBackground>
+
     </header>
     <main>
       <AboutUsContent />
@@ -43,6 +45,7 @@ import Line from "../components/Line.astro";
     gap: 2em;
     padding: 2em;
     justify-content: center;
+    flex-wrap: wrap;
   }
   a {
     text-decoration: none;

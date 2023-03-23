@@ -1,0 +1,36 @@
+---
+---
+
+<a href="#forside_main">
+  <div><span>⮟</span></div>
+</a>
+<style>
+  div {
+    position: absolute;
+    bottom: 1.5rem;
+    height: 80px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    scroll-behavior: smooth;
+    transform: translateX(-40px);
+    background-color: var(--custom_red);
+  }
+
+  span {
+    color: var(--muted_white);
+    font-size: 4rem;
+    line-height: 0;
+
+    transition: all 0.2s ease-in-out;
+  }
+  span:hover{
+    transform: scale(1.1);
+  }
+@media(max-width:800px){
+    a{
+        display: none;
+    }
+}
+</style>

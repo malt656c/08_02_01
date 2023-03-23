@@ -1,6 +1,7 @@
 ---
 import Footer from "../../components/Footer.astro";
 import Navigation from "../../components/Navigation.astro";
+import Line from "../../components/Line.astro";
 export async function getStaticPaths() {
   const url = "https://esdfgaunzaoxobhvkhgm.supabase.co/rest/v1/event_list";
 
@@ -37,54 +38,90 @@ const { event } = Astro.props;
   </head>
   <body>
     <header>
+      <div>
+        <img src={"../../public/database_billeder/" + event.event_name.split(" ").join("_") + ".webp"} alt="" />
+        <h1>{event.event_name}</h1>
+      </div>
       <Navigation prefix="../" />
-      <div><img src={"../../public/database_billeder/" + event.event_name.split(" ").join("_") + ".webp"} alt="" />
-          <h1>{event.event_name}</h1>
-    </div>
-
     </header>
     <main>
-      <section>
+      <Line />
+      <section class="info">
         <h3>{event.day}</h3>
-        <h3>{event.location}</h3>
-        <h3>{event.start_time} - {event.end_time}</h3>
+        <h3>{event.stage}</h3>
+        <h3>{event.start_time.substring(0, 5)} - {event.end_time.substring(0, 5)}</h3>
       </section>
-      <section>{event.description}</section>
+      <section><p>{event.description}</p></section>
     </main>
     <Footer />
   </body>
 </html>
 
 <style>
+  * {
+    font-family: roboto;
+  }
   header {
-    position: relative;
     display: grid;
-    height: max-content;
-'    width: 100%;
-    aspect-ratio: 3;'
+    width: 100%;
   }
   img {
     width: 100%;
-    aspect-ratio: 3;
+    height: 400px;
     object-fit: cover;
-    object-position: center;
+/*     object-position: center; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     filter: brightness(70%);
   }
   header > div {
     height: fit-content;
-    width: 100%;
-    top: 0;
-    z-index: -1;
-    position: absolute;
-display: grid;
-place-items: center;
+    display: grid;
+    place-items: center;
+    height: 400px;
   }
   h1 {
-    font-family: roboto;
     color: var(--muted_white);
     text-shadow: 0 0 4px rgb(0, 0, 0);
     font-size: 4rem;
-    position: absolute;
-    bottom: 0;
+    position: relative;
+
+    z-index: 1;
+    margin-bottom: -4.5rem;
+    text-align: center;
+  }
+  .info {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  h3 {
+    font-size: 1.5rem;
+    filter: opacity(50%);
+  }
+  p {
+    max-width: calc(65ch + 4rem);
+    font-size: 1.2rem;
+    padding: 2rem;
+    margin-inline: auto;
+    margin-block: 2rem;
+    line-height: 1.8;
+    background-color: var(--custom_white);
+    outline: 1px solid var(--custom_black);
+    justify-self: center;
+  }
+section:last-of-type{
+    margin: 1rem;
+  }
+  @media(max-width:600px){
+    .info {
+flex-direction: column;
+align-items: center;
+gap: 1rem;
+  }
+  h1{
+    font-size: 2rem;
+  }
   }
 </style>
